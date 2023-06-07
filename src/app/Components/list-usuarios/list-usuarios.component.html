@@ -1,0 +1,40 @@
+<div>
+    <table class="table mt-3 animated fadeIn faster">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">WebSite</th>
+                <th scope="col">Company</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of listado; let i = index">
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.name}}</td>
+                <td>{{usuario.username}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.address?.street}}</td>
+                <td>{{usuario.phone}}</td> 
+                <td>{{usuario.website}}</td> 
+                <td>{{usuario.company?.name}}</td> 
+                <td>
+                    <button class="btn btn-info mr-1" [routerLink]="['/usuarioEditar', usuario.id]">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button (click)="borrarUsuario(usuario,usuario?.id!)" class="btn btn-danger mr-1">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    <button [routerLink]="['/usuarioDetalle',usuario.id!]" class="btn btn-info">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </td>                   
+            </tr>
+        </tbody>
+    </table>
+</div>
